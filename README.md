@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/bilalfarooq112/React%20Components/_apis/build/status/MBilal-Farooq.data-table-app?branchName=master)](https://dev.azure.com/bilalfarooq112/React%20Components/_build/latest?definitionId=5&branchName=master)
+
 # Data Table App
 
 Demo app for the Data Table Component.
