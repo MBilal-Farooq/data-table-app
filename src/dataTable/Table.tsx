@@ -18,30 +18,31 @@ export type RowType = {
 export interface TableProps<T extends RowType> {
     /** Column definition */
     columns: Array<ColumnType>;
-    /** row data */
+    /** Row data */
     rows: Array<T>;
     /** To show checkboxes */
     selectable: boolean;
     /** To specify selected rows */
     selectedRows?: Array<T>;
-    /** will be called on any row click */
+    /** Will be called on any row click */
     onRowClick?: (rowData: T, rowIndex: number) => void;
-    /** will be called on checkbox selection change */
+    /** Will be called on checkbox selection change */
     onSelectChange?: (rowIndex: number) => void;
+    /** Will be called on SelectAll checkbox change */
     onSelectAllChange?: () => void;
 }
 
 /** Table */
 export default function Table<T extends RowType>(props: TableProps<T>): JSX.Element {
 
-    const {columns, rows, selectedRows, onRowClick, onSelectChange, onSelectAllChange} = props;
+    const {columns, rows, selectable, selectedRows, onRowClick, onSelectChange, onSelectAllChange} = props;
     
     /** Table Headers */
     const tableHeader = () => {
         return (
             <thead>
                 <tr>
-                    <th key={"SelectAll"}><input type={"checkbox"} checked={selectedRows?.length === rows.length} onChange={ () =>  onSelectAllChange?.() }></input></th>
+                    {selectable && <th key={"SelectAll"}><input type={"checkbox"} checked={selectedRows?.length === rows.length} onChange={ () =>  onSelectAllChange?.() }></input></th>}
                     {columns.map( (column, index) => {
                         return (
                             <th style={{width: column.width}} key={`col-${index}`}>{column.label}</th>
@@ -60,7 +61,7 @@ export default function Table<T extends RowType>(props: TableProps<T>): JSX.Elem
                     const isRowChecked = selectedRows?.includes(row);
                     return (
                         <tr key={`Row-${index}`} onClick={() => onRowClick?.(row, index)}>
-                            <td key={`Row-${index}-Col-CheckBox`}><input type={"checkbox"} checked={isRowChecked} onChange={ () => {onSelectChange?.(index)} }></input></td>
+                            {selectable && <td key={`Row-${index}-Col-CheckBox`}><input type={"checkbox"} checked={isRowChecked} onChange={ () => {onSelectChange?.(index)} }></input></td>}
                             {columns.map( (column, colIndex) => {
                             return (
                                 <td className={column.numeric ? 'cell-right-aligned' : ""} key={`Row-${index}-Col-${colIndex}`}>
