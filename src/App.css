@@ -1,4 +1,21 @@
-.App-header {
+.app {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
+.app-header {
   text-align: center;
+}
+
+.table-block {
+  position: relative;
+  width: calc(100% - 10em);
+  height: calc(100% - 10em);
+  margin: auto;
+  background-color: whitesmoke;
+  border: 1px inset black;
+  border-radius: 10px;
 }
 

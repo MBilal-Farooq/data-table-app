@@ -15,7 +15,18 @@ export default class ProductTableTestData {
            }, {
             id: 'price',
             label: 'Price',
-            numeric: true, // Right Align
+            numeric: false,
+            width: "40%"
+           }, {
+            id: 'type',
+            label: 'Type',
+            numeric: false,
+            width: ""
+           }, {
+            id: 'etc',
+            label: 'ETC',
+            numeric: false,
+            width: undefined
            }
         ];
     }
@@ -26,11 +37,13 @@ export default class ProductTableTestData {
             {
             id: '1',
             product: "ABC",
-            price: 15.2
+            price: '$15.2', 
+            type: "y"
             }, {
             id: '2',
             product: "DEF",
-            price: '$15.5'
+            price: '$15.5', 
+            type: "x"
             }
         ];
     }

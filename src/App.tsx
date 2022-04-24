@@ -9,11 +9,13 @@ function App() {
   const rows = ProductTableTestData.Rows;
 
   return (
-    <div>
-      <div className="App-header">
+    <div className="app">
+      <div className="app-header">
         <h1>{"Data Table Demo App"}</h1>
       </div>
-      <DataTable columns={columns} rows={rows} onRowClick={(rowData, _index) => console.log(rowData)}></DataTable>
+      <div className="table-block">
+        <DataTable columns={columns} rows={rows} onRowClick={(rowData, _index) => console.log(rowData)}></DataTable>
+      </div>
     </div>
   );
 }

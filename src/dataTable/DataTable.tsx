@@ -1,4 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./DataTable.css";
 
 /** Table Column Definition */
 export type ColumnType = {
@@ -28,7 +29,7 @@ export default function DataTable({rows, columns, onRowClick}: DataTableProps): 
                 <tr>
                     {columns.map( (column) => {
                         return (
-                            <th key={column.id}>{column.label}</th>
+                            <th style={{width: column.width}} key={column.id}>{column.label}</th>
                         );
                     } )}
                 </tr>
@@ -45,7 +46,9 @@ export default function DataTable({rows, columns, onRowClick}: DataTableProps): 
                         <tr key={`Row-${index}`} onClick={() => onRowClick?.(row, index)}>
                             {columns.map( (column, colIndex) => {
                             return (
-                                <td key={`Row-${index}-Col-${colIndex}`}>{row[column.id]}</td>
+                                <td className={column.numeric ? 'cell-right-aligned' : ""} key={`Row-${index}-Col-${colIndex}`}>
+                                    {row[column.id]}
+                                </td>
                             )
                         })}</tr>
                     );
