@@ -1,4 +1,5 @@
-import { ColumnType } from "../dataTable/DataTable";
+import { ColumnType } from "../dataTable/Table";
+
 
 /**
  * Test data
@@ -33,18 +34,14 @@ export default class ProductTableTestData {
 
     /** Rows */
     public static get Rows() {
-        return [
-            {
-            id: '1',
-            product: "ABC",
-            price: '$15.2', 
-            type: "y"
-            }, {
-            id: '2',
-            product: "DEF",
-            price: '$15.5', 
-            type: "x"
-            }
-        ];
+        const rows = [...Array(5)].map( (_value, index) => {
+            return {
+                id: `${index}`,
+                product: `ABC-${index}`,
+                price: '$15.0', 
+                type: "ABC"
+                }
+        });
+        return rows;
     }
 }

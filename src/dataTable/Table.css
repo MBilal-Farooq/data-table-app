@@ -1,0 +1,9 @@
+
+.data-table {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.cell-right-aligned {
+    text-align: right;
+}
