@@ -15,7 +15,11 @@ export function TableDemo(): JSX.Element {
         id: 'albumId',
         label: 'Album Id',
         numeric: false,
-        width: "20%"
+        width: "10%"
+       }, {
+        id: 'title',
+        label: 'Title',
+        numeric: false
        }, {
         id: 'url',
         label: 'URL',
@@ -57,11 +61,11 @@ export function TableDemo(): JSX.Element {
     }, [hasMoreData]);
 
     /** On table row click */
-    const onRowClick = (_rowData: any, _index: number) => {
+    const onRowClick = (_rowData: SampleDataType, _index: number) => {
         // handle onRowClick event
     }
 
-    const onSelectionChange = (_selectedRows: any[]) => {
+    const onSelectionChange = (_selectedRows: SampleDataType[]) => {
         // To do something with selectedRows
     }
     

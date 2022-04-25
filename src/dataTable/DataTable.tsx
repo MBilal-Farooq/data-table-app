@@ -11,9 +11,9 @@ export interface DataTableProps<T extends RowType>{
     /** To show the loading bar */
     loading?: boolean;
     /** will be called on any row click */
-    onRowClick?: (rowData: any, rowIndex: number) => void;
+    onRowClick?: (rowData: T, rowIndex: number) => void;
     /** On selection change */
-    onSelectionChange?: (selectedRows: any[]) => void;
+    onSelectionChange?: (selectedRows: T[]) => void;
     /** Will be called when scrolled to end */
     onScrollToEnd?: () => void;
 }
@@ -30,7 +30,11 @@ export default function DataTable<T extends RowType>({rows, columns, loading, on
     /** On select all change */
     const onSelectAllChange = () => {
         const allSelected = selectedRows.length === rows.length;
-        const selectAllRows = rows.map( (row) => row.isSelected = !allSelected );
+        const selectAllRows = rows.map( (row) => {
+            row.isSelected = !allSelected;
+            return row;
+        });
+        
         allSelected ? setSelectedRows([]) :
         setSelectedRows(selectAllRows);
         // Calling on selection change with all rows
