@@ -4,8 +4,8 @@ import { Spinner } from "react-bootstrap";
 import "./Table.css";
 
 /** Table Column Definition */
-export type ColumnType = {
-    id: string,
+export type ColumnType<T> = {
+    id: keyof T,
     label: string, 
     numeric: boolean,
     width?: string
@@ -21,7 +21,7 @@ export type RowType = {
 /** Table Props */
 export interface TableProps<T extends RowType> {
     /** Column definition */
-    columns: Array<ColumnType>;
+    columns: Array<ColumnType<T>>;
     /** Row data */
     rows: Array<T>;
     /** To show checkboxes */

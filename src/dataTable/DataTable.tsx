@@ -7,7 +7,7 @@ import Table, { ColumnType, RowType } from "./Table";
  */
 export interface DataTableProps<T extends RowType>{
     rows: Array<T>;
-    columns: Array<ColumnType>;
+    columns: Array<ColumnType<T>>;
     /** To show the loading bar */
     loading?: boolean;
     /** will be called on any row click */
@@ -34,7 +34,7 @@ export default function DataTable<T extends RowType>({rows, columns, loading, on
             row.isSelected = !allSelected;
             return row;
         });
-        
+
         allSelected ? setSelectedRows([]) :
         setSelectedRows(selectAllRows);
         // Calling on selection change with all rows

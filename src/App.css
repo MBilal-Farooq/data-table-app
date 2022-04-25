@@ -11,7 +11,7 @@
 
 .table-block {
   position: relative;
-  width: calc(100% - 5em);
+  width: 97%;
   height: calc(100% - 5em);
   margin: auto;
   background-color: whitesmoke;

@@ -6,23 +6,23 @@ import { useFetch } from "../hooks/useFetch";
 
 export function TableDemo(): JSX.Element {
 
-    const columns: Array<ColumnType> = [
+    const columns: Array<ColumnType<SampleDataType>> = [
         {
-        id: 'id',
-        label: 'Id',
+        id: "id",
+        label: "Id",
         numeric: false
        }, {
-        id: 'albumId',
-        label: 'Album Id',
+        id: "albumId",
+        label: "Album Id",
         numeric: false,
         width: "10%"
        }, {
-        id: 'title',
-        label: 'Title',
+        id: "title",
+        label: "Title",
         numeric: false
        }, {
-        id: 'url',
-        label: 'URL',
+        id: "url",
+        label: "URL",
         numeric: false,
         width: ""
        }
