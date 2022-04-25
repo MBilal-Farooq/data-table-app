@@ -15,7 +15,7 @@ export function TableDemo(): JSX.Element {
         id: 'albumId',
         label: 'Album Id',
         numeric: false,
-        width: "40%"
+        width: "20%"
        }, {
         id: 'url',
         label: 'URL',
@@ -31,10 +31,10 @@ export function TableDemo(): JSX.Element {
     const [currentPage, setCurrentPage] = useState<number>(0); 
     
     /** page data */
-    const [pageData, hasMoreData] = useFetch(currentPage, 25);
+    const [pageData, hasMoreData] = useFetch(currentPage, 15);
 
     /** Loading  */
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
 
     /** useEffect */
     useEffect( () => {

@@ -25,11 +25,11 @@ export interface TableProps<T extends RowType> {
     /** Row data */
     rows: Array<T>;
     /** To show checkboxes */
-    selectable: boolean;
+    selectable?: boolean;
     /** To set the SelectAll checkbox state */
     selectAll?: boolean;
     /** To show loader */
-    loading: boolean;
+    loading?: boolean;
     /** Will be called on any row click */
     onRowClick?: (rowData: T, rowIndex: number) => void;
     /** Will be called on checkbox selection change */
@@ -57,7 +57,7 @@ export default function Table<T extends RowType>(props: TableProps<T>): JSX.Elem
                 onScrollToEnd?.();
             }
         });
-        if (item) observer.current.observe(item);
+        if (item && observer.current.observe) observer.current.observe(item);
     }, [onScrollToEnd]);
 
     /** Table Headers */
@@ -87,7 +87,7 @@ export default function Table<T extends RowType>(props: TableProps<T>): JSX.Elem
                             {selectable && <td key={`Row-${index}-Col-CheckBox`}><input type={"checkbox"} checked={isRowChecked} onChange={ () => {onSelectChange?.(index)} }></input></td>}
                             {columns.map( (column, colIndex) => {
                             return (
-                                <td className={column.numeric ? 'cell-right-aligned' : ""} key={`Row-${index}-Col-${colIndex}`}>
+                                <td className={column.numeric ? "cell-right-aligned" : ""} key={`Row-${index}-Col-${colIndex}`}>
                                     {row[column.id]}
                                 </td>
 
@@ -107,7 +107,7 @@ export default function Table<T extends RowType>(props: TableProps<T>): JSX.Elem
                 {tableBody()}
             </table>
             {loading && 
-                <div style={{width: "100%", textAlign: "center"}}>
+                <div key={`table-loading`} data-testid={`table-loading`} style={{width: "100%", textAlign: "center"}}>
                     <Spinner animation="border" />
                 </div>
             }

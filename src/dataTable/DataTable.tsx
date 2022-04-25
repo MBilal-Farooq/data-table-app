@@ -49,7 +49,7 @@ export default function DataTable<T extends RowType>({rows, columns, loading, on
     }
 
     return (
-        <Table<T> columns={columns} rows={rows} loading={loading ?? false} selectable={true} selectAll={selectedRows.length === rows.length} 
+        <Table<T> columns={columns} rows={rows} loading={loading ?? false} selectable={true} selectAll={selectedRows.length === (rows.length || -1)} 
                 onRowClick={onRowClick} onSelectAllChange={onSelectAllChange} onSelectChange={onSelectChange} onScrollToEnd={onScrollToEnd}></Table>
     )
 
