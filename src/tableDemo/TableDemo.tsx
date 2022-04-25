@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
-import { SampleDataType } from "./api/SampleDataType";
-import DataTable from "./dataTable/DataTable";
-import { ColumnType } from "./dataTable/Table";
-import { useFetch } from "./hooks/useFetch";
+import { SampleDataType } from "../api/SampleDataType";
+import DataTable from "../dataTable/DataTable";
+import { ColumnType } from "../dataTable/Table";
+import { useFetch } from "../hooks/useFetch";
 
 export function TableDemo(): JSX.Element {
 

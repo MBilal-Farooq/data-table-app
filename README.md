@@ -2,7 +2,36 @@
 
 # Data Table App
 
-Demo app for the Data Table Component.
+Data Table Component demo app
+
+## Components
+
+### **Table Component**
+
+Typescript based generic component to show data in form of table
+
+#### Features
+    1. Customizable columns
+    2. Adjustable column Widths
+    3. Right Alignment of numeric cells
+    4. Selectable rows with controlable state
+    5. Row Click event
+    6. Loader
+    7. onScrollToEnd event for handling infinite scroll
+
+### **Data Table Component**
+
+DataTable is wrapper of Table component, which provides same functionality with a little different evets types for CheckBox selection changes.
+
+### **Table Demo**
+
+TableDemo component is demo component to show the DataTable component, Data fetching fro api is being done in this component. Handling of OnScrollEnd event to load more data is also handled in this component.
+
+## Hooks
+
+### **useFetch**
+
+useFetch is custom hook to fetch data from api. It also provides pagination functionality for data.
 
 ## Available Scripts
 
