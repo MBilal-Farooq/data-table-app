@@ -7,14 +7,14 @@ import { ColumnType } from "../dataTable/Table";
 export default class DataTableTestData {
 
     public static get Columns() {
-        const columns: Array<ColumnType> = [
+        const columns: Array<ColumnType<typeof this.Rows[0]>> = [
             {
-            id: 'produc',
-            label: 'Product',
+            id: "product",
+            label: "Product",
             numeric: false
            }, {
-            id: 'price',
-            label: 'price',
+            id: "price",
+            label: "price",
             numeric: false,
             width: "20%"
            }
@@ -24,11 +24,11 @@ export default class DataTableTestData {
 
     /** Rows */
     public static get Rows() {
-        const rows = [...Array(25)].map( (_value, index) => {
+        const rows = [...Array(10)].map( (_value, index) => {
             return {
                 id: `${index}`,
                 product: `ABC-${index}`,
-                price: '$15.0',
+                price: "$15.0",
                 }
         });
         return rows;

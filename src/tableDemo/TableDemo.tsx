@@ -5,74 +5,82 @@ import { ColumnType } from "../dataTable/Table";
 import { useFetch } from "../hooks/useFetch";
 
 export function TableDemo(): JSX.Element {
+  const columns: Array<ColumnType<SampleDataType>> = [
+    {
+      id: "id",
+      label: "Id",
+      numeric: false,
+    },
+    {
+      id: "albumId",
+      label: "Album Id",
+      numeric: false,
+      width: "10%",
+    },
+    {
+      id: "title",
+      label: "Title",
+      numeric: false,
+    },
+    {
+      id: "url",
+      label: "URL",
+      numeric: false,
+      width: "",
+    },
+  ];
 
-    const columns: Array<ColumnType<SampleDataType>> = [
-        {
-        id: "id",
-        label: "Id",
-        numeric: false
-       }, {
-        id: "albumId",
-        label: "Album Id",
-        numeric: false,
-        width: "10%"
-       }, {
-        id: "title",
-        label: "Title",
-        numeric: false
-       }, {
-        id: "url",
-        label: "URL",
-        numeric: false,
-        width: ""
-       }
-    ];
+  /** all data to show in table */
+  const [tableData, setAllData] = useState<SampleDataType[]>([]);
 
-    /** all data to show in table */
-    const [tableData, setAllData] = useState<SampleDataType[]>([]);
-    
-    /** For pagination */
-    const [currentPage, setCurrentPage] = useState<number>(0); 
-    
-    /** page data */
-    const [pageData, hasMoreData] = useFetch(currentPage, 15);
+  /** For pagination */
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
-    /** Loading  */
-    const [loading, setLoading] = useState<boolean>(false);
+  /** page data */
+  const [pageData, hasMoreData] = useFetch(currentPage, 15);
 
-    /** useEffect */
-    useEffect( () => {
-        setAllData( (allData) => {
-            return [...allData, ...pageData];
-        });
-    }, [pageData] )
+  /** Loading  */
+  const [loading, setLoading] = useState<boolean>(false);
 
-    /**
-     * On Scrol End
-     */
-    const onScrollToEnd = useCallback( () => {
-        if (!hasMoreData) return;
-        setLoading(true);
-        /** Adding it intentionally to just to show the scroll bar */
-        setTimeout( () => {
-            setCurrentPage( (pageNumber) => pageNumber + 1 );
-            setLoading(false);
-        }, 500 );
-    }, [hasMoreData]);
+  /** useEffect */
+  useEffect(() => {
+    setAllData((allData) => {
+      return [...allData, ...pageData];
+    });
+  }, [pageData]);
 
-    /** On table row click */
-    const onRowClick = (_rowData: SampleDataType, _index: number) => {
-        // handle onRowClick event
-    }
+  /**
+   * On Scrol End
+   */
+  const onScrollToEnd = useCallback(() => {
+    if (!hasMoreData) return;
+    setLoading(true);
+    /** Adding it intentionally to just to show the scroll bar */
+    setTimeout(() => {
+      setCurrentPage((pageNumber) => pageNumber + 1);
+      setLoading(false);
+    }, 500);
+  }, [hasMoreData]);
 
-    const onSelectionChange = (_selectedRows: SampleDataType[]) => {
-        // To do something with selectedRows
-    }
-    
-    return (
-        <div className="table-block">
-            <DataTable columns={columns} rows={tableData} loading={loading} onRowClick={onRowClick} onSelectionChange={onSelectionChange} onScrollToEnd={onScrollToEnd}></DataTable>
-        </div>
-    );
+  /** On table row click */
+  const onRowClick = (_rowData: SampleDataType, _index: number) => {
+    // handle onRowClick event
+  };
 
+  const onSelectionChange = (_selectedRows: SampleDataType[]) => {
+    // To do something with selectedRows
+  };
+
+  return (
+    <div className="table-block">
+      <DataTable
+        columns={columns}
+        rows={tableData}
+        loading={loading}
+        onRowClick={onRowClick}
+        onSelectionChange={onSelectionChange}
+        onScrollToEnd={onScrollToEnd}
+      ></DataTable>
+    </div>
+  );
 }
