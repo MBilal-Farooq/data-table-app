@@ -7,7 +7,7 @@ export default class ProductTableTestData {
 
     /** Rows */
     public static get Rows() {
-        const rows = [...Array(30)].map( (_value, index) => {
+        const rows = [...Array(25)].map( (_value, index) => {
             return {
                 id: `${index}`,
                 product: `ABC-${index}`,

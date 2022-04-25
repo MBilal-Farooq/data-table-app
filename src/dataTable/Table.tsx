@@ -45,7 +45,10 @@ export default function Table<T extends RowType>(props: TableProps<T>): JSX.Elem
 
     const {columns, rows, selectable, selectAll, loading, onRowClick, onSelectChange, onSelectAllChange, onScrollToEnd} = props;
     
+    // observer for last item in table
     const observer = useRef<IntersectionObserver | null>(null);
+
+    // reference of last item in table
     const lastItemRef = useCallback( (item: HTMLTableRowElement) => {
         if (observer.current) observer.current.disconnect();
         
