@@ -12,7 +12,7 @@ export function useFetch(page: number, itemsPerPage: number): [SampleDataType[],
   const [data, setData] = useState<SampleDataType[] | undefined>([]);
 
   /** Page data */
-  const [padgeData, setPageData] = useState<SampleDataType[]>([]);
+  const [pageData, setPageData] = useState<SampleDataType[]>([]);
   const [hasMoreData, setHasMoreData] = useState<boolean>(false);
 
   const dataLoaded = useRef(false);
@@ -46,5 +46,5 @@ export function useFetch(page: number, itemsPerPage: number): [SampleDataType[],
     }
   }, [page, itemsPerPage, data, hasMoreData]);
 
-  return [padgeData, hasMoreData];
+  return [pageData, hasMoreData];
 }
